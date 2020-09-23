@@ -3,11 +3,13 @@
 <head>
     <title>Project 3</title>
     <meta charset='utf-8'>
+    <link rel="stylesheet" href="style.css">
     <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>    
 </head>
 <body>
-    <div id='app'>
+    <div id='app' v-cloak>
         <p>Player: {{ playerName }}</p>
+        Guesses: {{guesses}}
     </div>
     <script src="script.js"></script>
 </body>
