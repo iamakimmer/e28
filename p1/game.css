@@ -1,0 +1,43 @@
+
+body {
+    color: purple;
+    font-family: 'Space Mono', monospace;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#options img {
+    width: 100px;
+    padding: 5px;
+    border: 5px solid plum;
+    cursor: pointer;    
+}
+
+#options img:hover {
+border: 5px solid rebeccapurple;
+}
+
+#attribution {
+   margin-top: 1em;
+}
+
+.round {
+    color: lightslategray;
+    opacity: 0.2;
+}
+.winner {
+    color: green;
+    opacity: 1;
+}
+
+.loser {
+    color: red;
+    opacity: 1;
+}

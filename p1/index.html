@@ -1,16 +1,56 @@
-<!doctype html>
-<html lang='en'>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Project 3</title>
-    <meta charset='utf-8'>
-    <link rel="stylesheet" href="style.css">
-    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Lizard Spock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="game.css">    
+
+
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'
+            defer></script>            
+    <script src="game.js" defer></script> 
 </head>
-<body>
-    <div id='app' v-cloak>
-        <p>Player: {{ playerName }}</p>
-        Guesses: {{guesses}}
-    </div>
-    <script src="script.js"></script>
+<body> 
+    <h1>Rock Paper Scissors Lizard Spock</h1>
+
+    <h2><a target="_blank" href="https://www.youtube.com/watch?v=x5Q6-wMx-K8&t=1s">How to play</a></h2>
+
+    <section id='app'v-cloak>
+        <h3>Choose wisely:</h3>
+
+        <section id="options">
+            <weapon v-for="weapon in weapons" v-on:select-weapon='selectWeapon($event)' :weapon="weapon"></weapon>
+        </section>
+        
+
+
+        
+        <h2 id="moveDescription">{{moveDescription}}</h2>    
+        <h2 id="resultMessage" v-bind:class="{ winner: winner === 'human', loser: winner === 'computer' }">{{resultMessage}}</h2>
+
+        <h2>Your Wins: {{humanWins}}</h2>
+        <h2>Computer Wins: {{computerWins}}</h2>
+        
+    
+        <div v-for="round in rounds" class="round" v-bind:class="{ winner: round.winner === 'human', loser: round.winner === 'computer' }">
+            Round: {{round.number}}. Winner: {{round.winner}} {{round.outcome}}
+        </div>
+
+        <button @click="clearRounds">Reset Game</button>
+        
+        <div id="attribution">
+            <p>
+                Images taken from <a href="https://thenounproject.com/StudioFibonacci/collection/roshambo/">The Noun Project</a>
+            </p>        
+            <p>
+                <a href="https://github.com/iamakimmer/e28/game">Github Source</a>
+            </p>
+        </div>
+    </section>
+
+    
+
 </body>
 </html>
