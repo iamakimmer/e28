@@ -18,35 +18,45 @@
     <h2><a target="_blank" href="https://www.youtube.com/watch?v=x5Q6-wMx-K8&t=1s">How to play</a></h2>
 
     <section id='app'v-cloak>
-        <h3>Choose wisely:</h3>
-
-        <section id="options">
-            <weapon v-for="weapon in weapons" v-on:select-weapon='selectWeapon($event)' :weapon="weapon"></weapon>
-        </section>
-        
 
 
-        
-        <h2 id="moveDescription">{{moveDescription}}</h2>    
-        <h2 id="resultMessage" v-bind:class="{ winner: winner === 'human', loser: winner === 'computer' }">{{resultMessage}}</h2>
-
-        <h2>Your Wins: {{humanWins}}</h2>
-        <h2>Computer Wins: {{computerWins}}</h2>
-        
-    
-        <div v-for="round in rounds" class="round" v-bind:class="{ winner: round.winner === 'human', loser: round.winner === 'computer' }">
-            Round: {{round.number}}. Winner: {{round.winner}} {{round.outcome}}
+        <div class="characters" v-if="!character">
+            <h2>Ready? Choose A Character:</h2>
+            <section class="options">
+                <game-character v-for="character in characters" v-on:select-character='selectCharacter($event)' :character="character" v-bind:key="character.name"></game-character>
+            </section>
         </div>
+        <div class="game" v-if="character">
 
-        <button @click="clearRounds">Reset Game</button>
+            <h3>Choose wisely {{character.name}}!:</h3>
+            <section class="options">
+                <game-weapon v-for="weapon in weapons" v-on:select-weapon='selectWeapon($event)' :weapon="weapon" v-bind:key="weapon.name"></game-weapon>
+            </section>
+            
+    
+    
+            
+            <h2 id="moveDescription">{{moveDescription}}</h2>    
+            <h2 id="resultMessage" v-bind:class="{ winner: winner === character.name, loser: winner === computerCharacter.name }">{{resultMessage}}</h2>
+    
+            <h2><img class="small-img" :src="`images/${character.name}.png`"> (You!) Wins: {{humanWins}}</h2>
+            <h2><img class="small-img" :src="`images/${computerCharacter.name}.png`"> (Computer) Wins: {{computerWins}}</h2>
+            
         
-        <div id="attribution">
-            <p>
-                Images taken from <a href="https://thenounproject.com/StudioFibonacci/collection/roshambo/">The Noun Project</a>
-            </p>        
-            <p>
-                <a href="https://github.com/iamakimmer/e28/game">Github Source</a>
-            </p>
+            <div v-for="round in rounds" class="round" v-bind:class="{ winner: round.winner === character.name, loser: round.winner === computerCharacter.name }">
+                Round: {{round.number}}. Winner: {{round.winner}}'s {{round.outcome}}
+            </div>
+    
+            <button @click="clearRounds">Reset Game</button>
+            
+            <div id="attribution">
+                <p>
+                    Images taken from <a href="https://thenounproject.com/StudioFibonacci/collection/roshambo/">The Noun Project</a>
+                </p>        
+                <p>
+                    <a href="https://github.com/iamakimmer/e28/game">Github Source</a>
+                </p>
+            </div>
         </div>
     </section>
 

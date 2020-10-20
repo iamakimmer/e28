@@ -14,6 +14,11 @@ Scissors by Studio Fibonacci from the Noun Project
 Lizard by Studio Fibonacci from the Noun Project
 Spock by Studio Fibonacci from the Noun Project
 
+
+
+[Big Bang Character Images](https://the-big-bang-theory.com/characters)
+
+
 ## Fonts
 [Space Mono](https://fonts.googleapis.com/css2?family=Space+Mono&display=swap)
 
