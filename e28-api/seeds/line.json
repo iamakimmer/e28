@@ -1,0 +1,329 @@
+{
+    "seeds": [
+        {
+            "script_id": 1,
+            "order": 0, 
+            "scene": "Some boys are playing, one is pushing the other in a toy car as the latter yells \"ah!\"."
+        },        
+        {
+            "script_id": 1,
+            "order": 1, 
+            "character": "CLEMENZA",
+            "action": "to his wife, on his front stoop",
+            "line": "I'm going now..."
+        },
+        {
+            "script_id": 1,
+            "order": 2, 
+            "character": "MRS. CLEMENZA",
+            "action": "standing in the door",
+            "line": "What time will you be home tonight?"
+        },
+        {
+            "script_id": 1,
+            "order": 3, 
+            "character": "CLEMENZA",
+            "action": "walking to car",
+            "line": "I don't know, probably late."
+        },    
+        {
+            "script_id": 1,
+            "order": 4, 
+            "character": "MRS. CLEMENZA",
+            "action": "Off Scene",
+            "line": "Don't forget the cannoli!"
+        },   
+        {
+            "script_id": 1,
+            "order": 5, 
+            "character": "CLEMENZA",
+            "action": "getting into the car, as is Rocco",
+            "line": "Yeah, yeah, yeah, yeah..."
+        },  
+        {
+            "script_id": 1,
+            "order": 6, 
+            "character": "PAULIE",
+            "action": "in the driver's seat",
+            "line": "Rocco, sit on the other side. You block the rearview mirror"
+        },  
+        {
+            "script_id": 1,
+            "order": 7, 
+            "character": "CLEMENZA",
+            "line": "That Sonny's runnin' wild. He's thinkin'a going to the mattresses find a spot over on the – 309 West 43rd Street. spots on the West Side"
+        },       
+        {
+            "script_id": 1,
+            "order": 8, 
+            "character": "PAULIE",
+            "line": "Yeah, I think about it"
+        },
+        {
+            "script_id": 1,
+            "order": 9, 
+            "character": "CLEMENZA",
+            "line": "Well think about it while you're drivin', will ya? I wanna hit New York sometime this month. And watch out for the kids while you're backin' out."
+        },
+        {
+            "script_id": 1,
+            "order": 10, 
+            "character": "CLEMENZA'S VOICE",
+            "line": "Hey, Paulie, I want you to go down 39th Street. Carlo Santos you pick up 18 -"
+        },
+        {
+            "script_id": 1,
+            "order": 11, 
+            "character": "PAULIE'S VOICE",
+            "line": "Yeah..."
+        },         
+        {
+            "script_id": 1,
+            "order": 12, 
+            "character": "CLEMENZA'S VOICE",
+            "action": "continuing",
+            "line": "...mattresses for the guys to sleep, while you bring me the bill..."
+        },        
+        {
+            "script_id": 1,
+            "order": 13, 
+            "character": "PAULIE'S VOICE",
+            "line": "Uh-huh, yeah, alright... That...?... bill"
+        },     
+        {
+            "script_id": 1,
+            "order": 14, 
+            "character": "CLEMENZA'S VOICE",
+            "line": "Ya'know, you make sure they're clean, cuz those guys'll be stuck up in there for a long time, ya'know?"
+        }, 
+        {
+            "script_id": 1,
+            "order": 15, 
+            "character": "PAULIE'S VOICE",
+            "line": "They're clean. They told me they exterminate them ."
+        },       
+        {
+            "script_id": 1,
+            "order": 16, 
+            "character": "CLEMENZA'S VOICE",
+            "action": "as Rocco laughs",
+            "line": "Exterminate? That's a bad word to use: exterminate! Get this guy. Watch out we don't exterminate you laughs."
+        },   
+        {
+            "script_id": 1,
+            "order": 17, 
+            "character": "PAULIE'S VOICE",
+            "line": "You think that's funny, or what?"
+        },    
+        {
+            "script_id": 1,
+            "order": 18, 
+            "character": "CLEMENZA'S VOICE",
+            "action": "laughs with Rocco",
+            "line": "Hey, Paulie –"
+        },
+        {
+            "script_id": 1,
+            "order": 19, 
+            "character": "CLEMENZA'S VOICE",
+            "action": "continuing in italian",
+            "line": "Did you fart?"
+        },   
+        {
+            "script_id": 1,
+            "order": 20, 
+            "character": "PAULIE'S VOICE",
+            "line": "Hey, Rocco, what did you do?"
+        },   
+        {
+            "script_id": 1,
+            "order": 21, 
+            "character": "ROCCO'S VOICE",
+            "action": "laughs",
+            "line": "Not me...nothin'...it wasn't me"
+        },
+        {
+            "script_id": 1,
+            "order": 22, 
+            "character": "PAULIE'S VOICE",
+            "action": "laughs",
+            "line": "It's gotta be him, then..."
+        },
+        {
+            "script_id": 1,
+            "order": 23, 
+            "character": "CLEMENZA'S VOICE",
+            "action": "laughs",
+            "line": "Pull over, will yah? I gotta take a leak."
+        },
+        {
+            "script_id": 1,
+            "order": 24,             
+            "scene": "Paulie pulls over, and Clemenza gets out to relieve himself. Rocco shoots Paulie three times as we hear a variation of the \"Title Theme\" music."
+        },
+        {
+            "script_id": 1,
+            "order": 25, 
+            "character": "CLEMENZA",
+            "action": "laughs",
+            "line": "Leave the gun. Take the cannoli."
+        },
+        {
+            "script_id": 2,
+            "order": 1,
+            "scene": "MICHAEL is standing next to an easel. On the easel are a bunch of numbers and simple equations. Beside it is a crude display of calling cards."
+        },
+        {
+            "script_id": 2,
+            "order": 2,
+            "scene": "OSCAR, JIM, RYAN, TOBY, CREED, STANLEY AND DWIGHT are sitting in chairs watching him. Dwight is feverishly taking notes. CREED is studying a pamphlet."
+        },
+        {
+            "script_id": 2,
+            "order": 3, 
+            "character": "MICHAEL",
+            "line": "So Phil recruited me to sell these cards, and now I am recruiting you."
+        },    
+        {
+            "script_id": 2,
+            "order": 4, 
+            "character": "OSCAR",
+            "line": "Who is this guy again?"
+        },  
+        {
+            "script_id": 2,
+            "order": 5, 
+            "character": "MICHAEL",
+            "line": "Don't worry about Phil. He drives a Corvette. He's fine"
+        },                                       
+        {
+            "script_id": 2,
+            "order": 6, 
+            "character": "DWIGHT",
+            "line": "What color is yet? Yellow?"
+        },          
+        {
+            "script_id": 2,
+            "order": 7, 
+            "character": "MICHAEL",
+            "action": "pressing on",
+            "line": "Just -- calling cards are the future. They sell themselves"
+        },          
+        {
+            "script_id": 2,
+            "order": 8, 
+            "character": "RYAN",
+            "line": "Who uses calling cards anymore?"
+        },  
+        {
+            "script_id": 2,
+            "order": 9, 
+            "character": "MICHAEL",
+            "line": "Great attitute Ryan. Just trying to get you to invest in your future."
+        },  
+        {
+            "script_id": 2,
+            "order": 10, 
+            "character": "STANLEY",
+            "line": "We do invest. We have our 401k."
+        },                          
+        {
+            "script_id": 2,
+            "order": 11, 
+            "character": "MICHAEL",
+            "line": "Well, with this, I promise you'll make much more than 401k, Stanley"
+        },  
+        {
+            "script_id": 2,
+            "order": 12, 
+            "character": "OSCAR",
+            "line": "This sounds like a get-rich-quick scheme"
+        },          
+        {
+            "script_id": 2,
+            "order": 13, 
+            "character": "MICHAEL",
+            "line": "Yes! Thank you. You will get rich quick. We all will"
+        },          
+        {
+            "script_id": 2,
+            "order": 14, 
+            "character": "TOBY",
+            "line": "Didn't you lose a lot of money from that other investment -- the one from the e-mail?"
+        },         
+        {
+            "script_id": 2,
+            "order": 15, 
+            "character": "MICHAEL",
+            "line": "What don't you understand Toby? His dad RAN THE FREAKIN' COUNTRY. And when the son of the deposed King of Nigeria e-mails you directly asking for help, you help. Okay?"
+        },  
+        {
+            "script_id": 2,
+            "order": 16, 
+            "character": "JIM",
+            "line": "Absolutely"
+        },  
+        {
+            "script_id": 2,
+            "order": 17, 
+            "character": "MICHAEL",
+            "line": "Now raise your hand if you wanna get in"
+        },  
+        {
+            "script_id": 2,
+            "order": 18,
+            "scene": "Jim raises a hand."
+        },                               
+        {
+            "script_id": 2,
+            "order": 19, 
+            "character": "JIM",
+            "line": "How is this not a pyramid scheme?"
+        },  
+        {
+            "script_id": 2,
+            "order": 20, 
+            "character": "MICHAEL",
+            "line": "Ugh. I'll show you again. "
+        },  
+        {
+            "script_id": 2,
+            "order": 21,
+            "scene": "Michael rips off the old paper and proceeds to draw on the pad. His body blocks the board. Finally, he reveals it."
+        },                             
+        {
+            "script_id": 2,
+            "order": 22, 
+            "character": "MICHAEL",
+            "line": "Get it? Not a pyramid scheme"
+        },          
+        {
+            "script_id": 2,
+            "order": 23, 
+            "scene": "We see that Michael's drawn a series of stick figures in the shape of a pyramid. Jim walks up, takes the sharpie, and draws a perfect triangle around the stick figures."
+        },          
+        {
+            "script_id": 2,
+            "order": 24, 
+            "action": "Michael stares at Jim's pyramid. He slowly tilts his head to the side, viewing it from a differnt angle."
+        },          
+        {
+            "script_id": 2,
+            "order": 25, 
+            "character": "MICHAEL",
+            "line": "I gotta go make a phone call."
+        },          
+        {
+            "script_id": 2,
+            "order": 26, 
+            "action": "Michael runs out of the room."
+        }, 
+        {
+            "script_id": 2,
+            "order": 27, 
+            "character": "CREED",
+            "action": "to the guys, conspiratorially",
+            "line": "You know what I think? We can do this without him."
+        }                 
+    ]
+}

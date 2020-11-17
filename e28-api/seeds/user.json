@@ -1,0 +1,9 @@
+{
+    "seeds": [
+        {
+            "name": "Matthew J Kim",
+            "email": "matthewjkim@gmail.com",
+            "password": "password"
+        }        
+    ]
+}

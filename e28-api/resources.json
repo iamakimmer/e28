@@ -1,0 +1,116 @@
+{
+    "script": {
+        "name": {
+            "type": "string",
+            "validators": [
+                "required"
+            ]            
+        },
+        "category": {
+            "type": "string",
+            "validators": [
+                "required"
+            ]            
+        },        
+        "episode": {
+            "type": "string", 
+            "validators": []        
+        },        
+        "scene": {
+            "type": "string",
+            "validators": [
+                "required"
+            ]            
+        },
+        "characters": {
+            "type": "string",
+            "validators": [
+                "required"
+            ]
+        },
+        "video_url": {
+            "type": "string",
+            "validators": [
+                "required"
+            ]            
+        },
+        "screenplay_author": {
+            "type": "string",
+            "validators": []            
+        },
+        "attribution": {
+            "type": "string",
+            "validators": []            
+        },
+        "directed_by": {
+            "type": "string",
+            "validators": []            
+        }
+    },
+    "line": {
+        "script_id": {
+            "type": "integer",
+            "validators": [
+                "required",
+                "numeric"
+            ]
+        },
+        "order": {
+            "type": "integer",
+            "validators": [
+                "required",
+                "numeric"
+            ]
+        },
+        "character": {
+            "type": "string",
+            "validators": []
+        },
+        "action": {
+            "type": "string",
+            "validators": []
+        },
+        "scene": {
+            "type": "string",
+            "validators": []
+        },        
+        "line": {
+            "type": "string",
+            "validators": [
+                "required"
+            ]
+        },
+        "audio_file": {
+            "type": "string",
+            "validators": []
+        },
+        "audio_file_by": {
+            "type": "string",
+            "validators": []
+        },
+        "video_file": {
+            "type": "string",
+            "validators": []
+        },        
+        "video_file_by": {
+            "type": "string",
+            "validators": []
+        }
+    },
+    "favorite": {
+        "script_id": {
+            "type": "integer",
+            "validators": [
+                "required",
+                "numeric"
+            ]
+        },
+        "user_id": {
+            "type": "integer",
+            "validators": [
+                "required",
+                "numeric"
+            ]
+        }
+    }
+}
