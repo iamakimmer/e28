@@ -2,12 +2,12 @@
     <section id="lines">
         <div v-if="!lines.length" class="error">No Lines Available, Add One Now!</div>
         <h3 v-if="lines.length">
-            Start Scene            
+            Start Scene <button @click="playEntireScene()">{{autoPlay ? "Stop Playing": "Autoplay Entire Script" }}</button>
         </h3>        
         <edit-line v-if="currentLineToEdit" @close="currentLineToEdit = null" :line="currentLineToEdit"></edit-line>
         <vue-record-audio v-show="showRecorder" id="recorder" ref="recorder" mode="hold" @stream="onStream" @result="onRecordingResult" />        
         <ul>
-            <li v-for="(line, index) in lines" :key="line.id" class="line recordable" v-bind:class="{ active: line == currentLine, playable: !!line.audio_file }" @click="playLine(line, $event)" @mouseenter="mouseoverLine($event, line, index)">
+            <li v-for="(line, index) in lines" :key="line.id" class="line recordable" v-bind:class="{ active: line == currentLine, playable: !!line.audio_file }" @click="playLine(line, index, $event)" @mouseenter="mouseoverLine($event, line, index)">
                 <div class="line-grouping">
                     <div class="scene" v-if="line.scene">
                         <div>SCENE</div>
@@ -60,6 +60,7 @@ export default {
             currentLine: {},
             currentLineIndex: 0,
             currentLineToEdit: null,
+            autoPlay: false,
         };
     },
     computed: {        
@@ -88,16 +89,42 @@ export default {
             }); 
         },        
         playEntireScene() {
+            if (this.autoPlay) {
+                this.autoPlay = false;
+                return;
+            }
+            this.autoPlay = true;
             this.currentLine = this.lines[0];
+            this.playLine(this.currentLine, 0);
         },
-        playLine(line, $event) {
+        playLine(line, index, $event) {
             console.log('$event', $event);
             if ($event && $event.srcElement.id === 'recorder') {
                 return; //skip if the recorder is hit
             }
             if (line.audio_file) {
                 var audio = new Audio(line.audio_file);
-                audio.play();            
+                audio.play();   
+                audio.onended = () => {
+                    console.log('audio finished');
+                    if (this.autoPlay) {
+                        if (this.lines[index+1]) {
+                            this.currentLine = this.lines[index+1];
+                            this.playLine(this.currentLine, index+1);
+                        } else {
+                            this.autoPlay = false;
+                        }
+                    }                    
+                }         
+            } else {
+                if (this.autoPlay) {
+                    if (this.lines[index+1]) {
+                        this.currentLine = this.lines[index+1];
+                        this.playLine(this.currentLine, index+1);
+                    } else {
+                        this.autoPlay = false;
+                    }
+                }                    
             }
         },
         onStream (stream) {
@@ -147,7 +174,7 @@ export default {
                 var url = response.secure_url;
                 console.log('updateLine');                
                 vm.updateLine(currentLine, url, currentLineIndex);
-                vm.playLine(currentLine);
+                vm.playLine(currentLine, currentLineIndex);
                 }
             };
 
@@ -163,11 +190,13 @@ export default {
                 this.uploadFileToCloudinary(base64Data, this.currentLine, this.currentLineIndex);            
             })            
         },
-        mouseoverLine (e, line, index) {            
-            this.showRecorder = true;
-            this.currentLine = line;
-            this.currentLineIndex = index;
-            e.target.appendChild(this.$refs.recorder.$el);
+        mouseoverLine (e, line, index) {       
+            if (!this.autoPlay) {
+                this.showRecorder = true;
+                this.currentLine = line;
+                this.currentLineIndex = index;
+                e.target.appendChild(this.$refs.recorder.$el);
+            }     
         }
     }
 };
@@ -210,13 +239,14 @@ export default {
                     opacity: 1;
                 }
             }
+            &.playable {
+                color: green;
+            }            
             &.active {
                 background-color: #283c63;
                 color: white;                    
             }
-            &.playable {
-                color: green;
-            }
+
         }
 
     }        
