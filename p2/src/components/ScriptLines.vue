@@ -18,7 +18,7 @@
                     <div  v-if="line.line">{{line.line}}</div>
                 </div>
                 <div class="line-options">
-                    <button @click="deleteLine(line, index)"><span class="material-icons">delete</span></button>
+                    <!-- <button @click="deleteLine(line, index)"><span class="material-icons">delete</span></button> -->
                     <button @click="editLine(line, index)"><span class="material-icons">edit</span></button>
                 </div>
             </li>
