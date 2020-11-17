@@ -7,10 +7,10 @@
         />
 
         <p>
-            Record script readings with anyone in the world!
+            Record script readings with anyone in the world! 
         </p>
 
-        <p class="instructions">Instructions: Go to a script and hover over any line. Hold down the microphone button (you'll have to allow microphone settings when asked) and start speaking. Let go of the button and it will save your audio file. Click on each line to play the line! It will be green if there's an audio file available.</p>
+        <p class="instructions">Instructions: Use a real computer (chrome, pref) Go to a script and hover over any line. Hold down the microphone button (you'll have to allow microphone settings when asked) and start speaking. Let go of the button and it will save your audio file. Click on each line to play the line! It will be green if there's an audio file available.</p>
 
         <nav>
             <ul>
