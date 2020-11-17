@@ -121,7 +121,7 @@ export default {
                 console.log('response', response);       
                 console.log('lines', this.lines);  
                 console.log('currentLineIndex', currentLineIndex);                       
-                // this.$set(this.lines, currentLineIndex, line);
+                this.$set(this.lines, currentLineIndex, line); //if u comment this line the line wont update in the array
             });            
             axios.get('line/query', {
                 params: {
