@@ -7,7 +7,7 @@
         <edit-line v-if="currentLineToEdit" @close="currentLineToEdit = null" :line="currentLineToEdit"></edit-line>
         <vue-record-audio v-show="showRecorder" id="recorder" ref="recorder" mode="hold" @stream="onStream" @result="onRecordingResult" />        
         <ul>
-            <li v-for="(line, index) in lines" :key="line.id" class="line recordable" v-bind:class="{ active: line == currentLine, playable: !!line.audio_file }" @click="playLine(line)" @mouseenter="mouseoverLine($event, line, index)">
+            <li v-for="(line, index) in lines" :key="line.id" class="line recordable" v-bind:class="{ active: line == currentLine, playable: !!line.audio_file }" @click="playLine(line, $event)" @mouseenter="mouseoverLine($event, line, index)">
                 <div class="line-grouping">
                     <div class="scene" v-if="line.scene">
                         <div>SCENE</div>
@@ -90,8 +90,11 @@ export default {
         playEntireScene() {
             this.currentLine = this.lines[0];
         },
-        playLine(line) {
-            console.log('clicked line', line);
+        playLine(line, $event) {
+            console.log('$event', $event);
+            if ($event && $event.srcElement.id === 'recorder') {
+                return; //skip if the recorder is hit
+            }
             if (line.audio_file) {
                 var audio = new Audio(line.audio_file);
                 audio.play();            
@@ -116,8 +119,9 @@ export default {
             console.log('line', line);
             axios.put(`/line/${line.id}`, line).then((response) => {
                 console.log('response', response);       
-                console.log('lines', this.lines);                         
-                this.$set(this.lines, currentLineIndex, line);
+                console.log('lines', this.lines);  
+                console.log('currentLineIndex', currentLineIndex);                       
+                // this.$set(this.lines, currentLineIndex, line);
             });            
             axios.get('line/query', {
                 params: {
