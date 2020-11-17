@@ -76,9 +76,7 @@
         },        
         "line": {
             "type": "string",
-            "validators": [
-                "required"
-            ]
+            "validators": []
         },
         "audio_file": {
             "type": "string",
