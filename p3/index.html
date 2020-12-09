@@ -1,11 +1,1115 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>e28-api</title>
+    <meta charset='utf-8'>
+    <link href=data:, rel=icon>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='/css/app.css' rel='stylesheet'>
 </head>
 <body>
-    todo
+    
+<h1 data-test='api-heading'>API</h1>
+
+<section>
+    <h2>Allowed origins</h2>
+
+        <code>PUBLIC: Any site can use this API</code>
+
+
+    
+    <p>(<small>Configure via <code>/core/.env</code></small>)</p>
+
+</section>
+
+<section>
+    <h2>Routes</h2>
+
+    <small>🔒 = Auth-required</small>
+
+    <table class='table table-light table-striped table-bordered table-sm'>
+        <thead class='thead-dark'>
+            <tr>
+                <th>Name</th>
+                <th>HTTP Method</th>
+                <th>URL</th>
+                <th>Usage & Params</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>login</td>
+            <td><code>POST</code></code></td>
+            <td><code>/login</code></td>
+
+            <td>Log in a user (<code>email</code>, <code>password</code>)</td>
+        </tr>
+        <tr>
+            <td>logout</td>
+            <td><code>POST</code></td>
+            <td><code>/logout</code></td>
+            <td>Log out a user</td>
+        </tr>
+        <tr>
+            <td>register</td>
+            <td><code>POST</code></td>
+            <td><code>/register</code></td>
+            <td>Register a new user (<code>name</code>, <code>email</code>, <code>password</code>)</td>
+        </tr>
+
+
+                <tr>
+            <td>index</td>
+            <td><code>GET</code></td>
+            <td>  <code>/script</code></td>
+
+            <td>Show all scripts</td>
+
+        </tr>
+        <tr>
+            <td>show</td>
+            <td><code>GET</code></td>
+            <td>  <code>/script/{id}</code></td>
+            <td>Show an individual script</td>
+        </tr>
+        <tr>
+            <td>store</td>
+            <td><code>POST</code></td>
+            <td>  <code>/script</code></td>
+            <td>Store a new script</td>
+        </tr>
+        <tr>
+            <td>update</td>
+            <td><code>PUT</code></td>
+            <td>  <code>/script/{id}</code></td>
+            <td>Update an existing script</td>
+        </tr>
+        <tr>
+            <td>destroy</td>
+            <td><code>DELETE</code></td>
+            <td>  <code>/script/{id}</code></td>
+
+            <td>Delete an existing script</td>
+        </tr>
+        <tr>
+            <td>query</td>
+            <td><code>GET</code></td>
+            <td>  <code>/script/query?key=value&key=value</code></td>
+            <td>Query a script</td>
+        </tr>
+
+                <tr>
+            <td>index</td>
+            <td><code>GET</code></td>
+            <td>  <code>/line</code></td>
+
+            <td>Show all lines</td>
+
+        </tr>
+        <tr>
+            <td>show</td>
+            <td><code>GET</code></td>
+            <td>  <code>/line/{id}</code></td>
+            <td>Show an individual line</td>
+        </tr>
+        <tr>
+            <td>store</td>
+            <td><code>POST</code></td>
+            <td>  <code>/line</code></td>
+            <td>Store a new line</td>
+        </tr>
+        <tr>
+            <td>update</td>
+            <td><code>PUT</code></td>
+            <td>  <code>/line/{id}</code></td>
+            <td>Update an existing line</td>
+        </tr>
+        <tr>
+            <td>destroy</td>
+            <td><code>DELETE</code></td>
+            <td>  <code>/line/{id}</code></td>
+
+            <td>Delete an existing line</td>
+        </tr>
+        <tr>
+            <td>query</td>
+            <td><code>GET</code></td>
+            <td>  <code>/line/query?key=value&key=value</code></td>
+            <td>Query a line</td>
+        </tr>
+
+                <tr>
+            <td>index</td>
+            <td><code>GET</code></td>
+            <td>🔒 <code>/favorite</code></td>
+
+            <td>Show all favorites</td>
+
+        </tr>
+        <tr>
+            <td>show</td>
+            <td><code>GET</code></td>
+            <td>🔒 <code>/favorite/{id}</code></td>
+            <td>Show an individual favorite</td>
+        </tr>
+        <tr>
+            <td>store</td>
+            <td><code>POST</code></td>
+            <td>🔒 <code>/favorite</code></td>
+            <td>Store a new favorite</td>
+        </tr>
+        <tr>
+            <td>update</td>
+            <td><code>PUT</code></td>
+            <td>🔒 <code>/favorite/{id}</code></td>
+            <td>Update an existing favorite</td>
+        </tr>
+        <tr>
+            <td>destroy</td>
+            <td><code>DELETE</code></td>
+            <td>🔒 <code>/favorite/{id}</code></td>
+
+            <td>Delete an existing favorite</td>
+        </tr>
+        <tr>
+            <td>query</td>
+            <td><code>GET</code></td>
+            <td>🔒 <code>/favorite/query?key=value&key=value</code></td>
+            <td>Query a favorite</td>
+        </tr>
+
+                </tbody>
+    </table>
+
+</section>
+
+<section>
+    <h2>Database</h2>
+    <small>
+        Note: Because this API is designed for demonstration purposes, this database info is publicly viewable. In a
+
+        real-world application, this information should be restricted.
+    </small>
+
+            <div class='db-table table-responsive'>
+        <h5>favorites</h5>
+
+                <small class='text-muted'>No data</small>
+            </div>
+
+        <div class='db-table table-responsive'>
+        <h5>lines</h5>
+
+        
+        <table class='table table-light table-sm table-striped table-bordered'>
+            <thead class="thead-dark">
+                <tr>
+                                        <th scope="col">id</th>
+                                        <th scope="col">created_at</th>
+                                        <th scope="col">updated_at</th>
+                                        <th scope="col">script_id</th>
+                                        <th scope="col">order</th>
+                                        <th scope="col">character</th>
+                                        <th scope="col">action</th>
+                                        <th scope="col">scene</th>
+                                        <th scope="col">line</th>
+                                        <th scope="col">audio_file</th>
+                                        <th scope="col">audio_file_by</th>
+                                        <th scope="col">video_file</th>
+                                        <th scope="col">video_file_by</th>
+                                    </tr>
+            </thead>
+            <tbody>
+                                <tr>
+                                        <td>1</td>
+                                        <td>2020-11-17 06:05:12</td>
+                                        <td>2020-11-17 06:05:12</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Some boys are playing, one is pushing the other in a toy car as the latter yells &quot;ah!&quot;.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>2</td>
+                                        <td>2020-11-17 06:05:12</td>
+                                        <td>2020-11-17 06:05:12</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>CLEMENZA</td>
+                                        <td>to his wife, on his front stoop</td>
+                                        <td></td>
+                                        <td>I&#039;m going now...</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>3</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>MRS. CLEMENZA</td>
+                                        <td>standing in the door</td>
+                                        <td></td>
+                                        <td>What time will you be home tonight?</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>4</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>3</td>
+                                        <td>CLEMENZA</td>
+                                        <td>walking to car</td>
+                                        <td></td>
+                                        <td>I don&#039;t know, probably late.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>5</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>4</td>
+                                        <td>MRS. CLEMENZA</td>
+                                        <td>Off Scene</td>
+                                        <td></td>
+                                        <td>Don&#039;t forget the cannoli!</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>6</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>CLEMENZA</td>
+                                        <td>getting into the car, as is Rocco</td>
+                                        <td></td>
+                                        <td>Yeah, yeah, yeah, yeah...</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>7</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>6</td>
+                                        <td>PAULIE</td>
+                                        <td>in the driver&#039;s seat</td>
+                                        <td></td>
+                                        <td>Rocco, sit on the other side. You block the rearview mirror</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>8</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>7</td>
+                                        <td>CLEMENZA</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>That Sonny&#039;s runnin&#039; wild. He&#039;s thinkin&#039;a going to the mattresses find a spot over on the – 309 West 43rd Street. spots on the West Side</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>9</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>8</td>
+                                        <td>PAULIE</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Yeah, I think about it</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>10</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>9</td>
+                                        <td>CLEMENZA</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Well think about it while you&#039;re drivin&#039;, will ya? I wanna hit New York sometime this month. And watch out for the kids while you&#039;re backin&#039; out.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>11</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>10</td>
+                                        <td>CLEMENZA&#039;S VOICE</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Hey, Paulie, I want you to go down 39th Street. Carlo Santos you pick up 18 -</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>12</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>11</td>
+                                        <td>PAULIE&#039;S VOICE</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Yeah...</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>12</td>
+                                        <td>CLEMENZA&#039;S VOICE</td>
+                                        <td>continuing</td>
+                                        <td></td>
+                                        <td>...mattresses for the guys to sleep, while you bring me the bill...</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>14</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>13</td>
+                                        <td>PAULIE&#039;S VOICE</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Uh-huh, yeah, alright... That...?... bill</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>15</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>14</td>
+                                        <td>CLEMENZA&#039;S VOICE</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Ya&#039;know, you make sure they&#039;re clean, cuz those guys&#039;ll be stuck up in there for a long time, ya&#039;know?</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>16</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>15</td>
+                                        <td>PAULIE&#039;S VOICE</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>They&#039;re clean. They told me they exterminate them .</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>17</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>16</td>
+                                        <td>CLEMENZA&#039;S VOICE</td>
+                                        <td>as Rocco laughs</td>
+                                        <td></td>
+                                        <td>Exterminate? That&#039;s a bad word to use: exterminate! Get this guy. Watch out we don&#039;t exterminate you laughs.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>18</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>17</td>
+                                        <td>PAULIE&#039;S VOICE</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>You think that&#039;s funny, or what?</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>19</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>18</td>
+                                        <td>CLEMENZA&#039;S VOICE</td>
+                                        <td>laughs with Rocco</td>
+                                        <td></td>
+                                        <td>Hey, Paulie –</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>20</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>19</td>
+                                        <td>CLEMENZA&#039;S VOICE</td>
+                                        <td>continuing in italian</td>
+                                        <td></td>
+                                        <td>Did you fart?</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>21</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>20</td>
+                                        <td>PAULIE&#039;S VOICE</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Hey, Rocco, what did you do?</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>22</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>21</td>
+                                        <td>ROCCO&#039;S VOICE</td>
+                                        <td>laughs</td>
+                                        <td></td>
+                                        <td>Not me...nothin&#039;...it wasn&#039;t me</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>23</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>22</td>
+                                        <td>PAULIE&#039;S VOICE</td>
+                                        <td>laughs</td>
+                                        <td></td>
+                                        <td>It&#039;s gotta be him, then...</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>24</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>23</td>
+                                        <td>CLEMENZA&#039;S VOICE</td>
+                                        <td>laughs</td>
+                                        <td></td>
+                                        <td>Pull over, will yah? I gotta take a leak.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>25</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>24</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Paulie pulls over, and Clemenza gets out to relieve himself. Rocco shoots Paulie three times as we hear a variation of the &quot;Title Theme&quot; music.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>26</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>1</td>
+                                        <td>25</td>
+                                        <td>CLEMENZA</td>
+                                        <td>laughs</td>
+                                        <td></td>
+                                        <td>Leave the gun. Take the cannoli.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>27</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>MICHAEL is standing next to an easel. On the easel are a bunch of numbers and simple equations. Beside it is a crude display of calling cards.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>28</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>OSCAR, JIM, RYAN, TOBY, CREED, STANLEY AND DWIGHT are sitting in chairs watching him. Dwight is feverishly taking notes. CREED is studying a pamphlet.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>29</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>MICHAEL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>So Phil recruited me to sell these cards, and now I am recruiting you.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>30</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>4</td>
+                                        <td>OSCAR</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Who is this guy again?</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>31</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>5</td>
+                                        <td>MICHAEL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Don&#039;t worry about Phil. He drives a Corvette. He&#039;s fine</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>32</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>6</td>
+                                        <td>DWIGHT</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>What color is yet? Yellow?</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>33</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>7</td>
+                                        <td>MICHAEL</td>
+                                        <td>pressing on</td>
+                                        <td></td>
+                                        <td>Just -- calling cards are the future. They sell themselves</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>34</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>8</td>
+                                        <td>RYAN</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Who uses calling cards anymore?</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>35</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>9</td>
+                                        <td>MICHAEL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Great attitute Ryan. Just trying to get you to invest in your future.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>36</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>10</td>
+                                        <td>STANLEY</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>We do invest. We have our 401k.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>37</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>11</td>
+                                        <td>MICHAEL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Well, with this, I promise you&#039;ll make much more than 401k, Stanley</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>38</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>12</td>
+                                        <td>OSCAR</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>This sounds like a get-rich-quick scheme</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>39</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>13</td>
+                                        <td>MICHAEL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Yes! Thank you. You will get rich quick. We all will</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>40</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>14</td>
+                                        <td>TOBY</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Didn&#039;t you lose a lot of money from that other investment -- the one from the e-mail?</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>41</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>15</td>
+                                        <td>MICHAEL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>What don&#039;t you understand Toby? His dad RAN THE FREAKIN&#039; COUNTRY. And when the son of the deposed King of Nigeria e-mails you directly asking for help, you help. Okay?</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>42</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>16</td>
+                                        <td>JIM</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Absolutely</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>43</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>17</td>
+                                        <td>MICHAEL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Now raise your hand if you wanna get in</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>44</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>18</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Jim raises a hand.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>45</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>19</td>
+                                        <td>JIM</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>How is this not a pyramid scheme?</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>46</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>20</td>
+                                        <td>MICHAEL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Ugh. I&#039;ll show you again. </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>47</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>21</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Michael rips off the old paper and proceeds to draw on the pad. His body blocks the board. Finally, he reveals it.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>48</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>22</td>
+                                        <td>MICHAEL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Get it? Not a pyramid scheme</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>49</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>23</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>We see that Michael&#039;s drawn a series of stick figures in the shape of a pyramid. Jim walks up, takes the sharpie, and draws a perfect triangle around the stick figures.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>50</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>24</td>
+                                        <td></td>
+                                        <td>Michael stares at Jim&#039;s pyramid. He slowly tilts his head to the side, viewing it from a differnt angle.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>51</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>25</td>
+                                        <td>MICHAEL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>I gotta go make a phone call.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>52</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>26</td>
+                                        <td></td>
+                                        <td>Michael runs out of the room.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <tr>
+                                        <td>53</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2</td>
+                                        <td>27</td>
+                                        <td>CREED</td>
+                                        <td>to the guys, conspiratorially</td>
+                                        <td></td>
+                                        <td>You know what I think? We can do this without him.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                            </tbody>
+
+        </table>
+
+            </div>
+
+        <div class='db-table table-responsive'>
+        <h5>scripts</h5>
+
+        
+        <table class='table table-light table-sm table-striped table-bordered'>
+            <thead class="thead-dark">
+                <tr>
+                                        <th scope="col">id</th>
+                                        <th scope="col">created_at</th>
+                                        <th scope="col">updated_at</th>
+                                        <th scope="col">name</th>
+                                        <th scope="col">category</th>
+                                        <th scope="col">episode</th>
+                                        <th scope="col">scene</th>
+                                        <th scope="col">characters</th>
+                                        <th scope="col">video_url</th>
+                                        <th scope="col">screenplay_author</th>
+                                        <th scope="col">attribution</th>
+                                        <th scope="col">directed_by</th>
+                                    </tr>
+            </thead>
+            <tbody>
+                                <tr>
+                                        <td>1</td>
+                                        <td>2020-11-17 06:05:12</td>
+                                        <td>2020-11-17 06:05:12</td>
+                                        <td>The Godfather</td>
+                                        <td>Movie</td>
+                                        <td></td>
+                                        <td>Leave The Gun - Take the Cannoli</td>
+                                        <td>MRS. CLEMENZA, CLEMENZA, PAULIE, ROCCO</td>
+                                        <td>https://www.youtube.com/embed/35fLKn2Tq3o</td>
+                                        <td>Mario Puzo, Francis Ford Coppola</td>
+                                        <td>Based on a Novel by Mario Puzo</td>
+                                        <td>Francis Ford Coppola</td>
+                                    </tr>
+                                <tr>
+                                        <td>2</td>
+                                        <td>2020-11-17 06:05:12</td>
+                                        <td>2020-11-17 06:05:12</td>
+                                        <td>The Office</td>
+                                        <td>TV</td>
+                                        <td>Michael&#039;s Birthday</td>
+                                        <td>Michael&#039;s Birthday</td>
+                                        <td>MICHAEL, OSCAR, JIM, RYAN, TOBY, CREED, STANLEY, DWIGHT</td>
+                                        <td>https://www.youtube.com/embed/lC5lsemxaJo</td>
+                                        <td>Gene Stupnitsky &amp; Lee Eisenberg</td>
+                                        <td></td>
+                                        <td>Ken Whittingham</td>
+                                    </tr>
+                            </tbody>
+
+        </table>
+
+            </div>
+
+        <div class='db-table table-responsive'>
+        <h5>users</h5>
+
+        
+        <table class='table table-light table-sm table-striped table-bordered'>
+            <thead class="thead-dark">
+                <tr>
+                                        <th scope="col">id</th>
+                                        <th scope="col">name</th>
+                                        <th scope="col">email</th>
+                                        <th scope="col">password</th>
+                                        <th scope="col">remember_token</th>
+                                        <th scope="col">created_at</th>
+                                        <th scope="col">updated_at</th>
+                                    </tr>
+            </thead>
+            <tbody>
+                                <tr>
+                                        <td>1</td>
+                                        <td>Matthew J Kim</td>
+                                        <td>matthewjkim@gmail.com</td>
+                                        <td>***</td>
+                                        <td></td>
+                                        <td>2020-11-17 06:05:13</td>
+                                        <td>2020-11-17 06:05:13</td>
+                                    </tr>
+                            </tbody>
+
+        </table>
+
+            </div>
+
+        </section>
+
 </body>
 </html>
