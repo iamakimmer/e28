@@ -19,10 +19,51 @@ const router = new VueRouter({
     routes: [
         { path: '/', component: HomePage },
         { path: '/account', component: AccountPage },
-        { path: '/scripts/new', component: ScriptCreatePage },
+        {
+            path: '/scripts/new', 
+            component: ScriptCreatePage,
+            meta: {
+                requiresAuth: true
+            } 
+        },
+        {          
+            path: '/denied',
+            component: () => import('@/components/pages/AccessDeniedPage.vue'),
+        },        
+        {          
+            path: '/register',
+            component: () => import('@/components/pages/RegisterPage.vue'),
+        },         
         { path: '/scripts/:id', component: ScriptPage, props: true },
     ],
 })
+
+
+router.beforeEach(async (to, from, next) => {
+
+    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+    console.log('requiresAuth', requiresAuth);
+    console.log('store.state.user', store.state.user);
+    const decide = () => {
+        if (requiresAuth && !store.state.user) {
+            next('/denied');
+        }
+        else {
+            next();
+        }
+    }
+
+    // If we don't have the user yet, dispatch our Vuex authUser action
+    if (store.state.user === null) {
+        store.dispatch('authUser').then(() => {
+            decide();
+        });
+    } else {
+        decide();
+    }
+
+});
+
 
 new Vue({
     router, // equivalent to router: router,

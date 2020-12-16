@@ -1,23 +1,26 @@
 <template>
-    <div id="account-page">
+    <div id="register-page">
+
         <div v-if="user">
-            <h2 data-test="welcome-message">Welcome, {{ user.name }}!</h2>
-
-            <div id="favorites">
-                <strong>Your Favorite Lines</strong>
-                <p v-if="favorites && favorites.length == 0">
-                    No favorites yet.
-                </p>
-                <li v-for="(favorite, key) in favorites" v-bind:key="key">
-                    {{ favorite.name }}
-                </li>
-            </div>
-
+            You are already logged in, {{user.name}}! If you want to create a new account, please log out first. 
             <button @click="logout" data-test="logout-button">Logout</button>
         </div>
 
-        <div v-else id="loginForm">
-            <h2>Login</h2>           
+        <div v-else id="registerForm">
+            <h2>Register</h2>    
+            <div>
+                <label
+                    >Name:
+                    <input
+                        type="text"
+                        data-test="name-input"
+                        v-model="data.name"
+                        id="name"
+                        required
+                        v-on:blur="validate()"
+                /></label>
+                <error-field v-if="errors && 'name' in errors" :errors="errors.name"></error-field>
+            </div>               
             <div>
                 <label
                     >Email:
@@ -30,27 +33,32 @@
                         v-on:blur="validate()"
                 /></label>
                 <error-field v-if="errors && 'email' in errors" :errors="errors.email"></error-field>
+
             </div>
             <div>
                 <label
-                    >Password :
+                    >Password:
                     <input
                         type="password"
                         data-test="password-input"
                         v-model="data.password"
+                        id="price"
                         required
                         v-on:blur="validate()"
                 /></label>
+                <small class="form-help">Minimum Characters 8</small>
                 <error-field v-if="errors && 'password' in errors" :errors="errors.password"></error-field>
-            </div> 
 
-            <button @click="login" data-test="login-button">Login</button>
+            </div>
+
+            <button @click="register" data-test="register-button">Login</button>
 
             <ul v-if="serverErrors">
                 <li class="error" v-for="(error, index) in serverErrors" :key="index">
                     {{ error }}
                 </li>
             </ul>
+
         </div>
     </div>
 </template>
@@ -60,34 +68,30 @@ import { axios } from '@/app.js';
 import ErrorField from '@/components/ErrorField.vue';
 import Validator from 'validatorjs';
 
-
 export default {
     components: {
         'error-field': ErrorField
-    },        
+    },    
     data() {
         return {
             data: {
                 email: null,
+                name: null,
                 password: null
             },
             errors: null,
             serverErrors: null,
-            favorites: [],
         };
     },
     computed: {
-        // Get our user and products state from the Vuex store
         user() {
             return this.$store.state.user;
-        },
-        products() {
-            return this.$store.state.products;
-        },
+        }        
     },
     methods: {
         validate() {
             let validator = new Validator(this.data, {
+                name: 'required',
                 email: 'required',
                 password: 'required|min:8',
             });
@@ -97,24 +101,18 @@ export default {
             } else {
                 this.errors = null;
             }
+
             return validator.passes();
         },        
-        loadFavorites() {
-            if (this.user) {
-                // Because favorite is a auth-protected resource, this will
-                // only return favorites belonging to the authenticated user
-                axios.get('favorite').then((response) => {
-                    this.favorites = response.data.favorite;
-                });
-            }
-        },
-        login() {
+        register() {
             if (this.validate()) {
                 this.serverErrors = null;
-                axios.post('login', this.data).then((response) => {                    
-                    if (response.data.authenticated) {
+                axios.post('register', this.data).then((response) => {
+                    console.log('response', response);                
+                    if (response.data.success) {
                         console.log('user', response.data.user);
                         this.$store.commit('setUser', response.data.user);
+                        this.$router.push('/account')
                     } else {
                         this.serverErrors = response.data.errors;
                     }
@@ -127,15 +125,21 @@ export default {
                     this.$store.commit('setUser', null);
                 }
             });
-        },
+        },        
     },
     watch: {
-        user() {
-            this.loadFavorites();
-        },
     },
     mounted() {
-        this.loadFavorites();
     },
 };
 </script>
+
+
+<style lang="scss">
+    .error {
+        color: red;
+    }
+    ul {
+        list-style: none;
+    }
+</style>

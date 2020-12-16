@@ -19,6 +19,7 @@
                 </div>
                 <div class="line-options">
                     <!-- <button @click="deleteLine(line, index)"><span class="material-icons">delete</span></button> -->
+                    <button @click="favorite(line, index)"><span class="material-icons">favorite</span></button>
                     <button @click="editLine(line, index)"><span class="material-icons">edit</span></button>
                 </div>
             </li>
@@ -139,6 +140,16 @@ export default {
         },
         editLine(line) {
             this.currentLineToEdit = line;
+        },
+        favorite(line) {
+            console.log('in favorite');
+            if (!line.favorited) {
+                axios.post('/favorite', line).then((response) => {
+                    if (response.data.success) {
+                        line.favorited = true;
+                    }
+                });
+            }
         },
         updateLine(line, url, currentLineIndex) {
             console.log('updating line', line, url);

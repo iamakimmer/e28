@@ -18,6 +18,7 @@
 
 <script>
 import ShowScript from '@/components/ShowScript.vue';
+import { axios } from '@/app.js';
 
 export default {
     name: '',
@@ -26,14 +27,28 @@ export default {
         'show-script': ShowScript,
     },
     data() {
-        return {};
+        return {
+            script: null,
+        };
+    },
+    mounted() {
+        axios.get(`script/${this.id}`, {
+        }).then((response) => {
+            if (response.data.success) {
+                console.log('script', response.data.script);
+                this.script = response.data.script;
+            } else {
+                this.script = null;
+            }            
+            
+        });           
     },
     computed: {
-        script() {
-            return this.scripts.filter((script) => {
-                return script.id == this.id;
-            }, this.id)[0];
-        },
+        // script() {
+        //     return this.scripts.filter((script) => {
+        //         return script.id == this.id;
+        //     }, this.id)[0];
+        // },
         scriptNotFound() {
             return this.script == null;
         },

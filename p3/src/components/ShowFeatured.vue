@@ -1,5 +1,5 @@
 <template>
-    <div id="featured">
+    <div class="featured">
         <h2>{{category}} Scenes</h2>
         <ul class="cleanList">
             <li v-for="script in featuredScripts" :key="script.id">
@@ -30,7 +30,7 @@ export default {
 
 
 <style scoped>
-    #featured h2 {
+    .featured h2 {
         text-transform: capitalize;
     }
     .h3 {

@@ -18,10 +18,10 @@
                     <router-link
                         v-for="link in links"
                         v-bind:key="link"
+                        :data-test="link + '-link'"
                         v-bind:to="paths[link]"
                         exact
-                        >{{ link }}</router-link
-                    >
+                        >{{ link }}</router-link>
                 </li>
             </ul>
         </nav>
@@ -42,7 +42,7 @@ export default {
         return {
             scripts: [],
             /* Store links in an array to maintain order */
-            links: ['home', 'add a script', 'account'],
+            links: ['home', 'add a script', 'account', 'register'],
 
             /* Map links to the appropriate component */
             paths: {
@@ -51,6 +51,7 @@ export default {
                 scripts: '/scripts',
                 categories: '/categories',
                 'add a script': '/scripts/new',
+                'register': '/register',
             },
         };
     },
