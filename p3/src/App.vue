@@ -28,19 +28,16 @@
 
         <router-view
             v-bind:scripts="scripts"
-            v-on:update-scripts="updateScripts()"
         ></router-view>
     </div>
 </template>
 
 <script>
-import { axios } from '@/app.js';
 
 export default {
     name: 'App',
     data() {
         return {
-            scripts: [],
             /* Store links in an array to maintain order */
             links: ['home', 'add a script', 'account', 'register'],
 
@@ -55,17 +52,15 @@ export default {
             },
         };
     },
-    methods: {
-        updateScripts() {
-            axios.get('script').then((response) => {
-                this.scripts = response.data.script;
-            });
-        },
-    },
     mounted() {
-        this.updateScripts();
+        this.$store.dispatch('fetchScripts');
         this.$store.dispatch('authUser');
     },
+    computed: {
+        scripts() {
+            return this.$store.state.scripts;
+        }
+    }
 };
 </script>
 

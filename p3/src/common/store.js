@@ -6,25 +6,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        cartCount: 0,
-        products: [],
+        scripts: [],
         user: null
     },
     mutations: {
-        setCartCount(state, payload) {
-            state.cartCount = payload;
-        },
-        setProducts(state, payload) {
-            state.products = payload;
+        setScripts(state, payload) {
+            state.scripts = payload;
         },
         setUser(state, payload) {
             state.user = payload;
         },
     },
     actions: {
-        fetchProducts(context) {
-            axios.get('product').then((response) => {
-                context.commit('setProducts', response.data.product);
+        fetchScripts(context) {
+            axios.get('script').then((response) => {
+                context.commit('setScripts', response.data.script);
             });
         },
         authUser(context) {
@@ -41,13 +37,4 @@ export default new Vuex.Store({
             });
         },
     },
-    getters: {
-        getProductById(state) {
-            return function (id) {
-                return state.products.filter((product) => {
-                    return product.id == id;
-                }, this.id)[0];
-            }
-        }
-    }
 })
